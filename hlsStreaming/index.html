@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video</title>
+    <style>
+      .center {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <video id="video" controls></video>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+      const video = document.getElementById('video');
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource('http://localhost:3000/media/1/stream/');
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = 'http://localhost:3000/media/1/stream/';
+        video.addEventListener('loadedmetadata', () => video.play());
+      }
+    </script>
+  </body>
+</html>
