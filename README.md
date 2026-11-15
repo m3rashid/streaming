@@ -2,23 +2,38 @@
 
 # 🎬 streaming
 
-**Learning HLS & DASH video streaming** with ffmpeg and Go.
+### Learning HLS & DASH video streaming with ffmpeg and Go
 
-[![Go](https://img.shields.io/badge/Go-00ADD8?logo=go&logoColor=white)](https://go.dev)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)](https://go.dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
 </div>
 
 ---
 
+## 📖 Overview
+
+A learning project exploring HLS and DASH video streaming protocols using ffmpeg and Go. Serves segmented media and an index page.
+
 ## 📂 Variants
 
-- `hlsStreaming/` — HLS (index.m3u8 + .ts segments)
-- `streaming/` — DASH/fiber-based streaming
+| Directory | Protocol |
+|---|---|
+| `hlsStreaming/` | HLS (index.m3u8 + .ts segments) |
+| `streaming/` | DASH/fiber-based streaming |
 
-## 🛠 Tech
+## 🏗 Architecture
 
-`Go` · `ffmpeg` · `HLS` · `DASH` · `Gorilla mux / Fiber`
+```
+streaming/
+├── hlsStreaming/   # HLS server (gorilla mux)
+├── streaming/      # DASH server (Fiber)
+└── go.work
+```
+
+## 🛠 Tech stack
+
+`Go` · `ffmpeg` · `HLS` · `DASH` · `Gorilla mux` · `Fiber`
 
 ## 📦 Quick start
 
@@ -30,4 +45,4 @@ go run main.go   # http://localhost:3000
 
 ## 📄 License
 
-MIT
+MIT © [m3rashid](https://github.com/m3rashid)
